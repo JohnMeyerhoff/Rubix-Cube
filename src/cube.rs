@@ -76,28 +76,55 @@ impl Cube {
         }
         let mut new_predeterminedcube = self.copy_cube();
         /*B2 U R2 F2 R2
- B2 F2 R2 U' 
-L2 D2 F' R' 
-B2 R F2 
-L' U F2 L2*/
+         B2 F2 R2 U'
+        L2 D2 F' R'
+        B2 R F2
+        L' U F2 L2*/
         /*let turned_cube = new_predeterminedcube.rotate_bottom_clockwise();
         new_predeterminedcube = turned_cube;*/
-
-        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();//B
-        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();//B
-
-        new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise();//U
-
-        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
-        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
-
-
-        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise();//F
-        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise();//F
-
-        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
-        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
-
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise(); //U
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+                                                                                /*
+                                                                                DONE: B2 U R2 F2 R2 */
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+        new_predeterminedcube = new_predeterminedcube.rotate_up_counter_clockwise(); //U'
+                                                                                     /*
+                                                                                     DONE: B2 F2 R2 U' */
+        new_predeterminedcube = new_predeterminedcube.rotate_left_clockwise(); //L
+        new_predeterminedcube = new_predeterminedcube.rotate_left_clockwise(); //L
+        new_predeterminedcube = new_predeterminedcube.rotate_down_clockwise(); //D
+        new_predeterminedcube = new_predeterminedcube.rotate_down_clockwise(); //D
+        new_predeterminedcube = new_predeterminedcube.rotate_front_counter_clockwise(); //F'
+        new_predeterminedcube = new_predeterminedcube.rotate_right_counter_clockwise(); //R'
+                                                                                        /*
+                                                                                        DONE: L2 D2 F' R' */
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+                                                                                /*
+                                                                                DONE: B2 R F2 */
+        new_predeterminedcube = new_predeterminedcube.rotate_left_counter_clockwise(); //L'
+        new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise(); //U
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise(); //F
+        new_predeterminedcube = new_predeterminedcube.rotate_left_clockwise(); //L
+        new_predeterminedcube = new_predeterminedcube.rotate_left_clockwise(); //L
+                                                                               /*
+                                                                               DONE: L' U F2 L2 */
 
         new_predeterminedcube
     }
