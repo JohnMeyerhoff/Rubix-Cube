@@ -58,8 +58,8 @@ impl Cube {
             //Loop runs n times. Underscore for variable name means we don't use the index for anything.
             let rng = thread_rng().gen_range(0, 12); //Random int from 0 to 11
             let rotated_cube = match rng {
-                0 => new_cube.rotate_bottom_clockwise(),
-                1 => new_cube.rotate_bottom_counter_clockwise(),
+                0 => new_cube.rotate_back_clockwise(),
+                1 => new_cube.rotate_back_counter_clockwise(),
                 2 => new_cube.rotate_down_clockwise(),
                 3 => new_cube.rotate_down_counter_clockwise(),
                 4 => new_cube.rotate_facing_clockwise(),
@@ -74,7 +74,21 @@ impl Cube {
             };
             new_cube = rotated_cube;
         }
-        new_cube
+        let mut new_predeterminedcube = self.copy_cube();
+        /*B2 U R2 F2 R2
+ B2 F2 R2 U' 
+L2 D2 F' R' 
+B2 R F2 
+L' U F2 L2*/
+        /*let turned_cube = new_predeterminedcube.rotate_bottom_clockwise();
+        new_predeterminedcube = turned_cube;*/
+
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();
+        new_predeterminedcube = new_predeterminedcube.rotate_down_clockwise();
+        
+        new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise();
+        new_predeterminedcube
     }
     pub fn forget_moves(&self) -> Cube {
         //Blanks the list of previous moves, keeps the state of the cube intact.
@@ -469,7 +483,7 @@ impl Cube {
         new_cube.sides[3].faces[6] = self.sides[5].faces[8];
         new_cube
     }
-    pub fn rotate_bottom_clockwise(&self) -> Cube {
+    pub fn rotate_back_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
         new_cube.previous_moves.push("B".to_string());
         new_cube.num_moves += 1;
@@ -500,7 +514,7 @@ impl Cube {
         new_cube.sides[4].faces[6] = self.sides[3].faces[8];
         new_cube
     }
-    pub fn rotate_bottom_counter_clockwise(&self) -> Cube {
+    pub fn rotate_back_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
         new_cube.previous_moves.push("B`".to_string());
         new_cube.num_moves += 1;
