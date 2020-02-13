@@ -6,3 +6,7 @@ authors = ["milotodt <milo@milotodt.com>"]
 [dependencies]
 
 rand = "0.5"
+[profile.dev]
+opt-level = 1
+[profile.release]
+opt-level = 3
