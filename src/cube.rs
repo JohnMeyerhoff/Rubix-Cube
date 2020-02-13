@@ -62,8 +62,8 @@ impl Cube {
                 1 => new_cube.rotate_back_counter_clockwise(),
                 2 => new_cube.rotate_down_clockwise(),
                 3 => new_cube.rotate_down_counter_clockwise(),
-                4 => new_cube.rotate_facing_clockwise(),
-                5 => new_cube.rotate_facing_counter_clockwise(),
+                4 => new_cube.rotate_front_clockwise(),
+                5 => new_cube.rotate_front_counter_clockwise(),
                 6 => new_cube.rotate_left_clockwise(),
                 7 => new_cube.rotate_left_counter_clockwise(),
                 8 => new_cube.rotate_right_clockwise(),
@@ -83,11 +83,22 @@ L' U F2 L2*/
         /*let turned_cube = new_predeterminedcube.rotate_bottom_clockwise();
         new_predeterminedcube = turned_cube;*/
 
-        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();
-        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();
-        new_predeterminedcube = new_predeterminedcube.rotate_down_clockwise();
-        
-        new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise();
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();//B
+        new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise();//B
+
+        new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise();//U
+
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
+
+
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise();//F
+        new_predeterminedcube = new_predeterminedcube.rotate_front_clockwise();//F
+
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
+        new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise();//R
+
+
         new_predeterminedcube
     }
     pub fn forget_moves(&self) -> Cube {
@@ -173,7 +184,7 @@ L' U F2 L2*/
             self.sides[3].faces[8]
         )
     }
-    pub fn rotate_facing_clockwise(&self) -> Cube {
+    pub fn rotate_front_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
         new_cube.previous_moves.push("F".to_string());
         new_cube.num_moves += 1;
@@ -204,7 +215,7 @@ L' U F2 L2*/
         new_cube.sides[3].faces[2] = self.sides[2].faces[6];
         new_cube
     }
-    pub fn rotate_facing_counter_clockwise(&self) -> Cube {
+    pub fn rotate_front_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
         new_cube.previous_moves.push("F`".to_string());
         new_cube.num_moves += 1;
