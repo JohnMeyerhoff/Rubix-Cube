@@ -85,7 +85,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
             }
-            'f' => {
+            Some('f') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -98,7 +98,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_front_counter_clockwise());
             }
-            'U' => {
+            Some('U') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -112,7 +112,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_clockwise());
             }
 
-            'u' => {
+            Some('u') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -125,7 +125,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_right_counter_clockwise());
                 solve_cube(in_cube.rotate_up_counter_clockwise());
             }
-            'D' => {
+            Some('D') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -138,7 +138,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
             }
-            'd' => {
+            Some('d') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -151,7 +151,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_down_counter_clockwise());
             }
-            'L' => {
+            Some('L') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -164,7 +164,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_left_clockwise());
                 solve_cube(in_cube.rotate_up_counter_clockwise());
             }
-            'l' => {
+            Some('l') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -177,7 +177,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_left_counter_clockwise());
                 solve_cube(in_cube.rotate_up_counter_clockwise());
             }
-            'R' => {
+            Some('R') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -190,7 +190,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_right_clockwise());
             }
-            'r' => {
+            Some('r') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -203,7 +203,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_right_counter_clockwise());
             }
-            'B' => {
+            Some('B') => {
                 solve_cube(in_cube.rotate_down_clockwise());
                 solve_cube(in_cube.rotate_down_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -216,7 +216,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_back_clockwise());
             }
-            'b' => {
+            Some('b') => {
                 solve_cube(in_cube.rotate_down_clockwise());
                 solve_cube(in_cube.rotate_down_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
