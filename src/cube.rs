@@ -48,7 +48,7 @@ impl Cube {
     pub fn is_solved(&self) -> bool {
         
         println!(
-            "&self.previous_moves.count() : {}",&self.previous_moves.to_string());
+            "&self.previous_moves.count() : {:?}",&self.previous_moves.last());
         //A cube is solved if all sides have all the same colours on their faces.
         if &self.previous_moves.len()<= &self.test.len(){
              return false; } //Assert less than

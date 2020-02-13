@@ -72,7 +72,7 @@ fn solve_cube(in_cube: Cube) -> () {
         //From benchmarking tests, this reduces runtime by about 30%
         let last_move = in_cube.previous_moves.last();
         match last_move {
-            'F' => {
+            Some('F') => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
