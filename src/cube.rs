@@ -46,10 +46,10 @@ impl Cube {
         }
     }
     pub fn is_solved(&self) -> bool {
-        
-        println!(
-            "&self.previous_moves.count() : {:?}",&self.previous_moves.last());// outputs : Some('u')
-        //A cube is solved if all sides have all the same colours on their faces.
+        println!("Last2Moves: {:?}",&self.previous_moves.iter().rev().take(3).collect::<Vec<_>>());
+        /*println!(
+            "&self.previous_moves.count() : {:?}",&self.previous_moves.iter());// outputs : Some('u')
+        //A cube is solved if all sides have all the same colours on their faces.*/
         if &self.previous_moves.len()<= &self.test.len(){
              return false; } //Assert less than
         else{
