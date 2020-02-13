@@ -72,7 +72,7 @@ fn solve_cube(in_cube: Cube) -> () {
         //From benchmarking tests, this reduces runtime by about 30%
         // need to also stop f b f' b' f b f' b' loops
 //OLD WAY:        let last_move = in_cube.previous_moves.last();
-        let last_moves = previous_moves.iter().rev().take(4).collect::<Vec<_>>());
+        let last_moves = in_cube.previous_moves.iter().rev().take(4).collect::<Vec<_>>();
         //last_move='z';
         let last_move = in_cube.previous_moves.last();
 
