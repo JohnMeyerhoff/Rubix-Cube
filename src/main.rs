@@ -5,7 +5,9 @@ use cube::Cube;
 use cube::Side;
 use std::thread;
 
-static NUMBER_OF_MOVES: u8 = 33; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
+static NUMBER_OF_MOVES: u8 = 21; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
+
+static MIN_NUMBER_OF_MOVES: u8 = 12; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
 static mut SOLVE_DEPTH: u8 = NUMBER_OF_MOVES + 1;
 
 fn main() {
@@ -68,9 +70,9 @@ fn solve_cube(in_cube: Cube) -> () {
     } else {
         //This statement prevents doing the opposite of the previous move, which would revert the previous move and put it to a state that has already been checked.
         //From benchmarking tests, this reduces runtime by about 30%
-        let last_move = in_cube.previous_moves.last().unwrap().as_str();
+        let last_move = in_cube.previous_moves.last();
         match last_move {
-            "F" => {
+            'F' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -83,7 +85,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
             }
-            "F`" => {
+            'f' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -96,7 +98,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_front_counter_clockwise());
             }
-            "U" => {
+            'U' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -110,7 +112,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_clockwise());
             }
 
-            "U'" => {
+            'u' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -123,7 +125,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_right_counter_clockwise());
                 solve_cube(in_cube.rotate_up_counter_clockwise());
             }
-            "D" => {
+            'D' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -136,7 +138,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
             }
-            "D`" => {
+            'd' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -149,7 +151,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_down_counter_clockwise());
             }
-            "L" => {
+            'L' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -162,7 +164,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_left_clockwise());
                 solve_cube(in_cube.rotate_up_counter_clockwise());
             }
-            "L`" => {
+            'l' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -175,7 +177,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_left_counter_clockwise());
                 solve_cube(in_cube.rotate_up_counter_clockwise());
             }
-            "R" => {
+            'R' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -188,7 +190,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_right_clockwise());
             }
-            "R`" => {
+            'r' => {
                 solve_cube(in_cube.rotate_back_clockwise());
                 solve_cube(in_cube.rotate_back_counter_clockwise());
                 solve_cube(in_cube.rotate_down_clockwise());
@@ -201,7 +203,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_right_counter_clockwise());
             }
-            "B" => {
+            'B' => {
                 solve_cube(in_cube.rotate_down_clockwise());
                 solve_cube(in_cube.rotate_down_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -214,7 +216,7 @@ fn solve_cube(in_cube: Cube) -> () {
                 solve_cube(in_cube.rotate_up_counter_clockwise());
                 solve_cube(in_cube.rotate_back_clockwise());
             }
-            "B`" => {
+            'b' => {
                 solve_cube(in_cube.rotate_down_clockwise());
                 solve_cube(in_cube.rotate_down_counter_clockwise());
                 solve_cube(in_cube.rotate_front_clockwise());
@@ -258,6 +260,7 @@ fn build_cube() -> Cube {
         ],
         previous_moves: vec![],
         num_moves: 0,
+        test: vec![],
     }
 }
 fn build_side(colour: char) -> Side {

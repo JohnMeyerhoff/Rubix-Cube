@@ -1,5 +1,5 @@
-use rand::prelude::*; // For random number generation
 
+use rand::prelude::*; // For random number generation
 pub struct Side {
     pub faces: Vec<char>,
 }
@@ -23,8 +23,11 @@ impl Side {
 }
 pub struct Cube {
     pub sides: Vec<Side>,
-    pub previous_moves: Vec<String>,
+    pub previous_moves: Vec<char>,
     pub num_moves: u8,
+    pub test : Vec<String>,
+    //test = vec!["F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),],
+        
 }
 impl Cube {
     pub fn copy_cube(&self) -> Cube {
@@ -39,16 +42,24 @@ impl Cube {
             ],
             previous_moves: self.previous_moves.clone(),
             num_moves: self.num_moves,
+            test : vec!["F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),],
         }
     }
     pub fn is_solved(&self) -> bool {
+        
+        println!(
+            "&self.previous_moves.count() : {}",&self.previous_moves.to_string());
         //A cube is solved if all sides have all the same colours on their faces.
+        if &self.previous_moves.len()<= &self.test.len(){
+             return false; } //Assert less than
+        else{
         for side in &self.sides {
             if side.is_solved() == false {
                 return false;
             }
         }
         true
+    }
     }
 
     pub fn scramble_cube(&self, n: u8) -> Cube {
@@ -215,7 +226,7 @@ impl Cube {
     }
     pub fn rotate_front_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("F".to_string());
+        new_cube.previous_moves.push('F');
         new_cube.num_moves += 1;
         //rotate top side
         new_cube.sides[0].faces[0] = self.sides[0].faces[6];
@@ -246,7 +257,7 @@ impl Cube {
     }
     pub fn rotate_front_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("F`".to_string());
+        new_cube.previous_moves.push('f');
         new_cube.num_moves += 1;
         //rotate Facing side
         new_cube.sides[0].faces[6] = self.sides[0].faces[0];
@@ -277,7 +288,7 @@ impl Cube {
     }
     pub fn rotate_up_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("U".to_string());
+        new_cube.previous_moves.push('U');
         new_cube.num_moves += 1;
         //rotate up side
         new_cube.sides[1].faces[0] = self.sides[1].faces[6];
@@ -308,7 +319,7 @@ impl Cube {
     }
     pub fn rotate_up_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("U`".to_string());
+        new_cube.previous_moves.push('u');
         new_cube.num_moves += 1;
         //rotate up side
         new_cube.sides[1].faces[6] = self.sides[1].faces[0];
@@ -339,7 +350,7 @@ impl Cube {
     }
     pub fn rotate_right_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("R".to_string());
+        new_cube.previous_moves.push('R');
         new_cube.num_moves += 1;
         //rotate right side
         new_cube.sides[2].faces[0] = self.sides[2].faces[6];
@@ -370,7 +381,7 @@ impl Cube {
     }
     pub fn rotate_right_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("R`".to_string());
+        new_cube.previous_moves.push('r');
         new_cube.num_moves += 1;
         //rotate right side
         new_cube.sides[2].faces[6] = self.sides[2].faces[0];
@@ -401,7 +412,7 @@ impl Cube {
     }
     pub fn rotate_down_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("D".to_string());
+        new_cube.previous_moves.push('D');
         new_cube.num_moves += 1;
         //rotate down side
         new_cube.sides[3].faces[0] = self.sides[3].faces[6];
@@ -432,7 +443,7 @@ impl Cube {
     }
     pub fn rotate_down_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("D`".to_string());
+        new_cube.previous_moves.push('d');
         new_cube.num_moves += 1;
         //rotate down side
         new_cube.sides[3].faces[6] = self.sides[3].faces[0];
@@ -463,7 +474,7 @@ impl Cube {
     }
     pub fn rotate_left_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("L".to_string());
+        new_cube.previous_moves.push('L');
         new_cube.num_moves += 1;
         //rotate down side
         new_cube.sides[4].faces[0] = self.sides[4].faces[6];
@@ -494,7 +505,7 @@ impl Cube {
     }
     pub fn rotate_left_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("L`".to_string());
+        new_cube.previous_moves.push('l');
         new_cube.num_moves += 1;
         //rotate Left side
         new_cube.sides[4].faces[6] = self.sides[4].faces[0];
@@ -525,7 +536,7 @@ impl Cube {
     }
     pub fn rotate_back_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("B".to_string());
+        new_cube.previous_moves.push('B');
         new_cube.num_moves += 1;
         //rotate bottom side
         new_cube.sides[5].faces[0] = self.sides[5].faces[6];
@@ -556,7 +567,7 @@ impl Cube {
     }
     pub fn rotate_back_counter_clockwise(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push("B`".to_string());
+        new_cube.previous_moves.push('b');
         new_cube.num_moves += 1;
         //rotate bottom side
         new_cube.sides[5].faces[6] = self.sides[5].faces[0];
