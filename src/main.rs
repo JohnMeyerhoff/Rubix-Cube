@@ -289,8 +289,8 @@ fn test_cubes() {
     assert_eq!(cube2.is_solved(), false);
 
     let cube3 = build_cube() //rotate one way, and rotate back. Should result in no change.
-        .rotate_facing_clockwise()
-        .rotate_facing_counter_clockwise()
+        .rotate_front_clockwise()
+        .rotate_front_counter_clockwise()
         .rotate_up_clockwise()
         .rotate_up_counter_clockwise()
         .rotate_right_clockwise()
@@ -305,10 +305,10 @@ fn test_cubes() {
     assert_eq!(cube3.num_moves, 12);
 
     let cube4 = build_cube() //Four rotations in same direction should result in no change.
-        .rotate_facing_clockwise()
-        .rotate_facing_clockwise()
-        .rotate_facing_clockwise()
-        .rotate_facing_clockwise()
+        .rotate_front_clockwise()
+        .rotate_front_clockwise()
+        .rotate_front_clockwise()
+        .rotate_front_clockwise()
         .rotate_up_clockwise()
         .rotate_up_clockwise()
         .rotate_up_clockwise()
