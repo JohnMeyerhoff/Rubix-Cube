@@ -5,7 +5,7 @@ use cube::Cube;
 use cube::Side;
 use std::thread;
 
-static NUMBER_OF_MOVES: u8 = 20; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
+static NUMBER_OF_MOVES: u8 = 19; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
 
 static mut SOLVE_DEPTH: u8 = NUMBER_OF_MOVES + 1;
 
@@ -74,10 +74,10 @@ fn solve_cube(in_cube: Cube) -> () {
         let last_moves = in_cube.previous_moves.iter().rev().take(4).collect::<Vec<_>>();
         //last_move='z';
         let mut last_move = in_cube.previous_moves.last();
-println!("{:?}",last_moves);
+//println!("{:?}",last_moves);
 if in_cube.num_moves >=5 {
     if last_moves[0] == last_moves[2]{
-    println!("SAME!!!!");
+    //println!("SAME!!!!");
     last_move = Some(last_moves[2]);
 }}
     //TODO IF AXIS IS OVERLOADED, FORCE PERPENDICULAR TURN
