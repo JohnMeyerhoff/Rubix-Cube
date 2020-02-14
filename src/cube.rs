@@ -42,7 +42,7 @@ impl Cube {
             ],
             previous_moves: self.previous_moves.clone(),
             num_moves: self.num_moves,
-            test : vec!["F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),"F".to_string(),],
+            test : vec!["F".to_string(),],
         }
     }
     pub fn is_solved(&self) -> bool {
@@ -94,7 +94,10 @@ impl Cube {
         /*let turned_cube = new_predeterminedcube.rotate_bottom_clockwise();
         new_predeterminedcube = turned_cube;*/
         new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        //-----
         new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
+        //delete second b
+       /* new_predeterminedcube = new_predeterminedcube.rotate_back_clockwise(); //B
         new_predeterminedcube = new_predeterminedcube.rotate_up_clockwise(); //U
         new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
         new_predeterminedcube = new_predeterminedcube.rotate_right_clockwise(); //R
@@ -136,7 +139,7 @@ impl Cube {
         new_predeterminedcube = new_predeterminedcube.rotate_left_clockwise(); //L
                                                                                /*
                                                                                DONE: L' U F2 L2 */
-
+*/
         new_predeterminedcube
     }
     pub fn forget_moves(&self) -> Cube {

@@ -5,7 +5,7 @@ use cube::Cube;
 use cube::Side;
 use std::thread;
 
-static NUMBER_OF_MOVES: u8 = 21; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
+static NUMBER_OF_MOVES: u8 = 12; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
 
 static MIN_NUMBER_OF_MOVES: u8 = 12; //Number of random moves applied to cube. Setting this higher will take a long time by a factor of 11^N 
 static mut SOLVE_DEPTH: u8 = NUMBER_OF_MOVES + 1;
