@@ -596,4 +596,73 @@ impl Cube {
         new_cube.sides[3].faces[8] = self.sides[4].faces[6];
         new_cube
     }
+    //DECLARE ghjklo !!!!!
+    //g is back
+    //h is front
+    //j is down
+    //k is up
+    //l is left
+    //o is right
+    pub fn rotate_back_twice(&self) -> Cube {
+        let mut new_cube = self.copy_cube();
+        new_cube.previous_moves.push('g');
+        new_cube.num_moves += 1;
+        //rotate bottom side
+        new_cube.rotate_back_clockwise().rotate_back_clockwise();
+        new_cube.previous_moves.pop();
+        new_cube.previous_moves.pop();
+        new_cube
+    }
+    pub fn rotate_front_twice(&self) -> Cube {
+        let mut new_cube = self.copy_cube();
+        new_cube.previous_moves.push('h');
+        new_cube.num_moves += 1;
+        //rotate bottom side
+        new_cube.rotate_front_clockwise().rotate_front_clockwise();
+        new_cube.previous_moves.pop();
+        new_cube.previous_moves.pop();
+        new_cube
+    }
+    pub fn rotate_down_twice(&self) -> Cube {
+        let mut new_cube = self.copy_cube();
+        new_cube.previous_moves.push('j');
+        new_cube.num_moves += 1;
+        //rotate bottom side
+        new_cube.rotate_down_clockwise().rotate_down_clockwise();
+        new_cube.previous_moves.pop();
+        new_cube.previous_moves.pop();
+        new_cube
+    }
+    pub fn rotate_up_twice(&self) -> Cube {
+        let mut new_cube = self.copy_cube();
+        new_cube.previous_moves.push('k');
+        new_cube.num_moves += 1;
+        //rotate bottom side
+        new_cube.rotate_up_clockwise().rotate_up_clockwise();
+        new_cube.previous_moves.pop();
+        new_cube.previous_moves.pop();
+        new_cube
+    }
+    pub fn rotate_left_twice(&self) -> Cube {
+        let mut new_cube = self.copy_cube();
+        new_cube.previous_moves.push('l');
+        new_cube.num_moves += 1;
+        //rotate bottom side
+        new_cube.rotate_left_clockwise().rotate_left_clockwise();
+        new_cube.previous_moves.pop();
+        new_cube.previous_moves.pop();
+        new_cube
+    }
+    pub fn rotate_right_twice(&self) -> Cube {
+        let mut new_cube = self.copy_cube();
+        new_cube.previous_moves.push('o');
+        new_cube.num_moves += 1;
+        //rotate bottom side
+        new_cube.rotate_right_clockwise().rotate_right_clockwise();
+        new_cube.previous_moves.pop();
+        new_cube.previous_moves.pop();
+        new_cube
+    }
+    
+    
 }
