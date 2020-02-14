@@ -601,7 +601,7 @@ impl Cube {
     //h is front
     //j is down
     //k is up
-    //l is left
+    //t is left
     //o is right
     pub fn rotate_back_twice(&self) -> Cube {
         let mut new_cube = self.copy_cube();
@@ -645,7 +645,7 @@ impl Cube {
     }
     pub fn rotate_left_twice(&self) -> Cube {
         let mut new_cube = self.copy_cube();
-        new_cube.previous_moves.push('l');
+        new_cube.previous_moves.push('t');
         new_cube.num_moves += 1;
         //rotate bottom side
         new_cube.rotate_left_clockwise().rotate_left_clockwise();
