@@ -137,6 +137,7 @@ impl Cube {
                                                                                /*
                                                                                DONE: L' U F2 L2 */
 
+                                                                               new_predeterminedcube.num_moves=20;
         new_predeterminedcube
     }
     pub fn forget_moves(&self) -> Cube {
